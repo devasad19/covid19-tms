@@ -1,0 +1,84 @@
+/*!
+ * Start Bootstrap - Scrolling Nav (https://startbootstrap.com/template/scrolling-nav)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-scrolling-nav/blob/master/LICENSE)
+ */
+header {
+  padding: 156px 0 100px;
+}
+
+section {
+  padding: 150px 0;
+}
+
+
+.eXiOBo.map_dataset_area .map_dataset_wrapper .map_dataset button {
+    padding: 10px 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    border: 0px;
+    background: linear-gradient(to right, rgb(171, 171, 171), rgb(131, 131, 131));
+    margin: 2px auto;
+    width: 98%;
+    border-radius: 50px;
+}
+.eXiOBo.map_dataset_area .map_dataset_wrapper .map_dataset button.active {
+    color: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgb(141, 198, 63) 0%, rgb(0, 148, 68) 100%) !important;
+}
+
+.eXiOBo.map_dataset_area div[class*="d_&_d"]:nth-child(1) .district_and_division_data {
+    background: rgb(93, 95, 239);
+}
+.eXiOBo.map_dataset_area .district_and_division_data {
+    box-shadow: rgba(73, 81, 236, 0.17) 5px 8px 37px 1px;
+    border-radius: 15px;
+    padding: 15px;
+    height: 100px;
+    max-height: 150px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.eXiOBo.map_dataset_area div[class*="d_&_d"]:nth-child(2) .district_and_division_data {
+    background: rgb(167, 40, 218);
+}
+.eXiOBo.map_dataset_area div[class*="d_&_d"]:nth-child(3) .district_and_division_data {
+    background: rgb(33, 99, 160);
+}
+.eXiOBo.map_dataset_area div[class*="d_&_d"]:nth-child(4) .district_and_division_data {
+    background: rgb(141, 198, 63);
+}
+.eXiOBo.map_dataset_area div[class*="d_&_d"]:nth-child(5) .district_and_division_data {
+    background: rgb(238, 38, 47);
+}
+.eXiOBo.map_dataset_area div[class*="d_&_d"]:nth-child(6) .district_and_division_data {
+    background: rgb(56 124 93);
+}
+.eXiOBo.map_dataset_area div[class*="d_&_d"]:nth-child(7) .district_and_division_data {
+    background: rgb(53 61 157);
+}
+.eXiOBo.map_dataset_area div[class*="d_&_d"]:nth-child(8) .district_and_division_data {
+    background: rgb(193 98 42);
+}
+
+
+.eXiOBo.map_dataset_area .district_and_division_data h4 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+
+
