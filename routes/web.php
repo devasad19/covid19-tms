@@ -24,6 +24,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
     Route::get('/user/vaccine-registration', [App\Http\Controllers\DashboardController::class, 'vaccineReg'])->name('user.vaccineReg');
+    Route::get('/user/vaccine-registration/step/two', [App\Http\Controllers\DashboardController::class, 'vaccineRegStep2'])->name('user.vaccineRegStep2');
+    Route::get('/user/vaccine-registered', [App\Http\Controllers\DashboardController::class, 'vaccineRegistered'])->name('user.vaccineRegistered');
 
 });
 

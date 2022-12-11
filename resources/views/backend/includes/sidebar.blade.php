@@ -94,7 +94,7 @@
                 <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('user.vaccineReg') }}">New User</a>
-                        <a class="collapse-item" href="registered-user-testing.php">Already Registered User</a>
+                        <a class="collapse-item" href="{{ route('user.vaccineRegistered') }}">Already Registered User</a>
                     </div>
                 </div>
             </li>
