@@ -23,7 +23,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Covid19-TMS</a>
+      <a class="navbar-brand js-scroll-trigger" href="/">Covid19-TMS</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,8 +50,17 @@
           </li>
            <li class="nav-item active" style="padding-left: 100px;
     margin-top: 5px;">
-            <a href="signup.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+
+          @if(Auth::check())
+            <a href="dashboard" class="d-none mr-2 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            Dashboard</a>
+          @else
+            <a href="{{ route('login') }}" class="d-none mr-2 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            Login</a>
+            <a href="{{ route('register') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             Registration</a>
+          @endif
+
           </li>
 
 

@@ -2,110 +2,192 @@
 
 @section('content')
 
-                <div class="container-fluid">
+         <!-- Begin Page Content -->
+        <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Covid19-Testing</h1>
-<form name="newtesting" method="post">
-  <div class="row">
-
-                        <div class="col-lg-6">
-
-                            <!-- Basic Card Example -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Personal Information</h6>
-                                </div>
-                                <div class="card-body">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                                            <input type="text" class="form-control" id="fullname" name="fullname"  placeholder="Enter your full name..." pattern="[A-Za-z ]+" title="letters only" required="true">
-                                        </div>
-                                        <div class="form-group">
-                                             <label>Mobile Number</label>
-                                  <input type="text" class="form-control" id="mobilenumber" name="mobilenumber" placeholder="Please enter your mobile number" pattern="[0-9]{10}" title="10 numeric characters only" required="true" onBlur="mobileAvailability()">
-                                                <span id="mobile-availability-status" style="font-size:12px;"></span>
-                                        </div>
-                                        <div class="form-group">
-                                             <label>DOB</label>
-                                            <input type="date" class="form-control" id="dob" name="dob" required="true">
-                                        </div>
-                                        <div class="form-group">
-                                               <label>Any Govt Issued ID</label>
-                                            <input type="text" class="form-control" id="govtissuedid" name="govtissuedid" placeholder="Pancard / Driving License / Voter id / any other" required="true">
-                                        </div>
-                                        <div class="form-group">
-                                              <label>Govt Issued ID Number</label>
-                                            <input type="text" class="form-control" id="govtidnumber" name="govtidnumber" placeholder="Enter Goevernment Issued ID Number" required="true">
-                                        </div>
-                          
-
-                                        <div class="form-group">
-                                              <label>Division</label>
-                                              <select class="form-control" id="state" name="state" required="true">
-                                            <option value="">--select division--</option> 
-                                            <option value="Barishal">Barishal</option>    
-                                            <option value="Chattogram">Chattogram</option>    
-                                            <option value="Dhaka">Dhaka</option>    
-                                            <option value="Khulna">Khulna</option>    
-                                            <option value="Rajshahi">Rajshahi</option>    
-                                            <option value="Rangpur">Rangpur</option>    
-                                            <option value="Mymensingh">Mymensingh</option>    
-                                            <option value="Sylhet">Sylhet</option>    
-                                              </select>
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                              <label>Address</label>
-                                            <textarea class="form-control" id="address" name="address" required="true" placeholder="Enter your full addres here"></textarea>
-                                        </div>
-                                    
-                                  <!--   <div class="form-group">
-                                        <label>State</label>
-                                      <input type="text" class="form-control" id="state" name="state" placeholder="Enter your State Here" required="true">
-                                    </div> -->
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-6">
-
-                           <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Testing Information</h6>
-                                </div>
-                                <div class="card-body">
-                             <div class="form-group">
-                                              <label>Test Type</label>
-                                              <select class="form-control" id="testtype" name="testtype" required="true">
-                                            <option value="">Select</option> 
-                                            <option value="Antigen">Antigen</option>  
-                                            <option value="RT-PCR">RT-PCR</option>
-                                            <option value="CB-NAAT">CB-NAAT</option>    
-                                              </select>
-                                        </div>
-
-                                <div class="form-group">
-                                <label>Time Slot for Test</label>
-                                 <input type="datetime-local" class="form-control" id="birthdaytime" name="birthdaytime" class="form-control">                                        
-                             </div>
-                            <div class="form-group">
-                                 <input type="submit" class="btn btn-primary btn-user btn-block" name="submit" id="submit">                           
-                             </div>
-
-                                </div>
-                            </div>
-                       
-
-                        </div>
-
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     </div>
-</form>
 
-                </div>
+                    <!-- Content Row -->
+                    <div class="row">
+ 
+                        <!-- Total Tests-->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+
+
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                             Total Tests</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_test }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-virus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+
+                        <!-- Assigned test-->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                              Total Assigned</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_assigned }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+
+                        <!-- On the way for sample collection-->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> On the way for sample collection
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $total_on_the_way }}</div>
+                                                </div>
+                                                <div class="col">
+                                                 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-motorcycle fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+
+                        <!-- Sample Collected -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                               Sample Collected</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_sample_collected }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-prescription-bottle fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+            <!-- Sent to Lab -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                              Sample Sent to Lab</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_sent_to_lab }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-microscope fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+        <!-- Report Delivered-->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Report Delivered
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $total_report_done }}</div>
+                                                </div>
+                                                <div class="col">
+                                                 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                        </div>
+
+            <!-- Total Registered Patients-->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+
+
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                             Total Registered Phlebotomist</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_phlebotomist }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            <!-- Total Registered Phlebotomist-->
+           
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                   
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                              Total Registered Specialist Doctor</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_specialist_dr }}</div>
+                                        </div>
+
+                                        <div class="col-auto"> 
+                                            <i class="fas fa-user-nurse fa-2x text-gray-300"></i>
+                                        </div> 
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                        </div>
+                 
+                    </div>
+
+                    <!-- Content Row -->
+        </div>
 
 @endsection

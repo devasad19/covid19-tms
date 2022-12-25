@@ -1,15 +1,19 @@
 @extends('backend.app.backend_index')
 
 @section('content')
+                    <form method="POST" action="{{ route('user.vaccineregi1St') }}">
+                        @csrf
 
                 <div class="container-fluid">
 
+        @include('backend.includes.alerts')
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Registration Process</h1>
-                    <form name="newtesting" method="post">
+                     
                       <div class="row">
 
-                        <div class="col-lg-6">
+
+                        <div class="col-lg-5">
 
                            <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -24,16 +28,13 @@
                                   </select>
                             </div>
  
-
                                 </div>
                             </div>
                        
-
                         </div>
 
 
                         <div class="col-lg-6">
-
                             <!-- Basic Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
@@ -62,12 +63,11 @@
                         </div>
 
 
-
-
                     </div>
-</form>
+
 
                 </div>
+                        </form>
 @endsection
 
 

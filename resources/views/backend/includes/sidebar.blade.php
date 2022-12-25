@@ -2,7 +2,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/covid-tms">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-virus"></i>
                 </div>
@@ -13,23 +13,19 @@
             <hr class="sidebar-divider my-0">
  
 
-
-     <li class="nav-item">
-                <a class="nav-link" href="dashboard.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
+ 
+         @if(Auth::user()->type == 'admin')
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseOne">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Phlebotomist</span>
+                    <span>Staf Management</span>
                 </a>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="add-phlebotomist.php">Add</a>
-                         <a class="collapse-item" href="manage-phlebotomist.php">Manage</a>
+                        <a class="collapse-item" href="{{ route('admin.addPhlebotomist') }}">Add New Staff</a>
+                         <a class="collapse-item" href="{{ route('admin.manageStaff') }}">Manage Staff's</a>
                     </div>
                 </div>
             </li>
@@ -43,13 +39,10 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="new-test.php">New</a>
-                        <a class="collapse-item" href="assigned-test.php">Assigned</a>
-                        <a class="collapse-item" href="ontheway-samplecollection-test.php">On the Way for<br /> Sample Collection</a>
-                         <a class="collapse-item" href="sample-collected-test.php">Sample Collected</a>
-                           <a class="collapse-item" href="samplesent-lab-test.php">Sent to lab</a>
-                            <a class="collapse-item" href="reportdelivered-test.php">Report Delivered</a>
- <a class="collapse-item" href="all-test.php">All Tests</a>
+                        <a class="collapse-item" href="{{ route('admin.new_patients_list') }}">New Patients List</a>
+                        <a class="collapse-item" href="{{ route('admin.assingedPlhebotomist') }}">Assigned Plhebotomist</a>
+                        <a class="collapse-item" href="{{ route('admin.assingedSpecialist') }}">Assigned Specialist</a>
+                        <a class="collapse-item" href="{{ route('admin.reportDeliveriableList') }}">Report Deliveriable List</a>
                     </div>
                 </div>
             </li>
@@ -66,16 +59,47 @@
                         </div>
                 </div>
             </li>
+            @endif
+        
+         @if(Auth::user()->type == 'phlebotomist')
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-virus"></i>
+                    <span>Manage Test</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('plhebotomist.plhebotomistPatienList') }}">My Patients List</a>
+                         
+                    </div>
+                </div>
+            </li>
+         @endif
 
         
-         
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="live-test-updates.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
+         @if(Auth::user()->type == 'specialist_dr')
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-virus"></i>
+                    <span>Manage Test</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('plhebotomist.plhebotomistPatienList') }}">My Patients List</a>
+
+                      
+                    </div>
+                </div>
+            </li>
+         @endif
+
+
+         @if(Auth::user()->type == null)
+ 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -93,19 +117,25 @@
                 </a>
                 <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('user.vaccineReg') }}">New User</a>
-                        <a class="collapse-item" href="{{ route('user.vaccineRegistered') }}">Already Registered User</a>
+                        <a class="collapse-item" href="{{ route('user.vaccineReg') }}">New User Registration</a>
+                        <a class="collapse-item" href="{{ route('user.showRegDetails') }}">Show Registration Details</a>
+                        <!-- <a class="collapse-item" href="{{ route('user.vaccineRegistered') }}">Already Registered User</a> -->
                     </div>
                 </div>
             </li>
- <li class="nav-item">
-                <a class="nav-link" href="patient-search-report.php">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('user.userTestHistory') }}">
                     <i class="fas fa-fw fa-file"></i>
-                    <span>Test Report</span></a>
+                    <span>Test Tracking History</span></a>
             </li>
-         
-<li class="nav-item active">
-                <a class="nav-link" href="login.php">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('user.getReportDownload') }}">
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Download Report</span></a>
+            </li>
+         @endif
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('login') }}">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Admin</span></a>
             </li>
