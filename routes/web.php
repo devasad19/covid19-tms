@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/user/test-track', [App\Http\Controllers\DashboardController::class, 'userTestHistory'])->name('user.userTestHistory');
     Route::get('/user/report-download', [App\Http\Controllers\DashboardController::class, 'getReportDownload'])->name('user.getReportDownload');
     Route::get('/user/download-test-report/{id}', [App\Http\Controllers\DashboardController::class, 'downloadTestReport'])->name('user.downloadTestReport');
+    Route::get('/user/fees-payment', [App\Http\Controllers\DashboardController::class, 'userFeePayment'])->name('user.userFeePayment');
 
 });
 

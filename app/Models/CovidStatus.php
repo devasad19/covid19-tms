@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserNid extends Model
+class CovidStatus extends Model
 {
     use HasFactory;
 
 
-    protected $fillable = ['nid','user_id', 'dob', 'pid', 'type', 'status'];
+    protected $fillable = ['patient_id', 'status'];
 
 
-    
 
 }

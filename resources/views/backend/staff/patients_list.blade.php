@@ -35,11 +35,14 @@
                                       
                                     <tbody>
 	            						@foreach($allPatients as $patient)
-	            					 
+	            							<?php $ttype = str_replace('_', ' ', $patient->user->type); ?>
+	            				 
 	                                        <tr>
 	                                            <td>{{$i++}}</td>
 	                                            <td>{{ $patient->user->name }}</td>
-	                                            <td>{{ $patient->user->type }}</td>
+
+	                                            <td>{{ ucwords($ttype) }}</td>
+
 	                                            <td>{{ $patient->vaccineRegister->user->nid->pid }}</td>
 	                                            <td>{{ $patient->vaccineRegister->user->name }}</td>
 	                                             
@@ -114,6 +117,17 @@
 						                    <form method="POST" action="{{ route('staff.uploadReportFile') }}" enctype="multipart/form-data">
 						                        @csrf
 						                        <input type="hidden" name="id" value="{{$patient->id}}">
+								                 <div class="ffdsfp">
+								                     <div class="form-group">
+								                          <select class="form-control" name="cvd_status" required="true">
+								                            <option value="">--covid status--</option> 
+
+								                            <option value="1">Positive</option>  
+								                            <option value="0">Negative</option>  
+								                             
+								                          </select>
+								                    </div>
+								                </div>
 								                 <div class="ffdsfp">
 								                     <div class="form-group">
 								                          <input type="file" name="report_file" class="form-control" style="height: 44px">

@@ -8,6 +8,7 @@ use App\Models\VaccineRegister;
 use App\Models\User;
 use App\Models\ReportTrack;
 use App\Models\PatientAssign;
+use App\Models\CovidStatus;
 use Auth;
 use Hash;
 use Response;
@@ -51,15 +52,18 @@ class DashboardController extends Controller
 
     public function userTestHistory(){
  
-        $testTracks = ReportTrack::where('user_id',Auth::user()->id)->orderBy('created_at', 'DESC')->get();
+        $testTracks = ReportTrack::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
    
+
+        dd(Auth::user()->id);
+
         return view('backend.user_test_track', compact('testTracks'));
     }
 
     public function getReportDownload(){
  
-        $patient = PatientAssign::where('vaccine_register_id',Auth::user()->id)->first();
-   
+        $patient = PatientAssign::where('user_id',Auth::user()->id)->first();
+    
         return view('backend.user_report_download', compact('patient'));
     }
 
@@ -79,6 +83,13 @@ class DashboardController extends Controller
 
     public function vaccineRegistered(){
         return view('backend.vaccine_registered');
+    }
+    public function userFeePayment(){
+
+
+        $patient = VaccineRegister::where('user_id',Auth::user()->id)->first();
+
+        return view('backend.fees_payment', compact('patient'));
     }
 
     public function addPhlebotomist(){
@@ -256,6 +267,7 @@ class DashboardController extends Controller
 
     public function phlebotomistStatusUpdate(Request $request){ 
  
+ dd($request->id);
         $assignPatient = PatientAssign::find($request->id);
 
         if($request->status == 'on_the_way'){
@@ -299,6 +311,9 @@ class DashboardController extends Controller
             $status = 'Deliverble accepted';
             $remark = 'Report Uploaded for deliverble to patient';
 
+        }else{
+            $status = 'Deliverble panding';
+            $remark = 'Report pending';
         }
 
         ReportTrack::create([
@@ -331,6 +346,13 @@ class DashboardController extends Controller
         $patient = PatientAssign::where('id', $request->id)->update([
             'report_file' => $fileName,
         ]);
+
+        CovidStatus::create([
+            'patient_id' => $request->id,
+            'status' => $request->cvd_status,
+        ]);
+
+
 
         return back()->with('success', 'Patient Report Uploaded successfully');
     }

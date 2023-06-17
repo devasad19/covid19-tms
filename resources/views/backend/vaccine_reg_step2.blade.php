@@ -6,7 +6,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Covid19-Testing</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Covid19-Testing Registration Form</h1>
              
                       <div class="row">
  

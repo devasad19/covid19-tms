@@ -29,6 +29,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+           <li class="nav-item active">
+            <a class="nav-link js-scroll-trigger" href="#live_updates">Live Updates</a>
+          </li>
+           <li class="nav-item ">
+            <a class="nav-link js-scroll-trigger" href="#online_process">Vaccine Online Process</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#about">About Coronavirus </a>
           </li>
@@ -38,16 +44,7 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Prevention</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link js-scroll-trigger" href="registered-user-testing.php">User Panel</a>
-          </li>
-           <li class="nav-item active">
-            <a class="nav-link js-scroll-trigger" href="live-test-updates.php">Live Updates</a>
-          </li>
-
-           <li class="nav-item active">
-            <a class="nav-link js-scroll-trigger" href="login.php">Admin</a>
-          </li>
+           
            <li class="nav-item active" style="padding-left: 100px;
     margin-top: 5px;">
 
@@ -149,40 +146,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12  col-lg-8 col-xl-9 justify-content-center">
-            <div class=" row row-cols-2 p-0 justify-content-center">
-              <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
-                <div class="district_and_division_data">
-                  <h4>নমুনা পরীক্ষা</h4>
-                  <h4>14,898,480</h4>
-                </div>
-              </div>
-              <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
-                <div class="district_and_division_data">
-                  <h4> শনাক্ত</h4>
-                  <h4>2,028,114</h4>
-                </div>
-              </div>
-              <div class=" col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
-                <div class="district_and_division_data">
-                  <h4> শনাক্তের হার %</h4>
-                  <h4>14</h4>
-                </div>
-              </div>
-              <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
-                <div class="district_and_division_data">
-                  <h4> সুস্থ</h4>
-                  <h4>1,967,369</h4>
-                </div>
-              </div>
-              <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
-                <div class="district_and_division_data">
-                  <h4>মৃত্যু </h4>
-                  <h4>29,374</h4>
-                </div>
-              </div>
-            </div>
-          </div>
+ 
         </div>
       </div>
     </div>
@@ -193,7 +157,7 @@
 
 
 
-  <section id="services" class="bg-light">
+  <section id="live_updates" class="bg-light">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -209,48 +173,54 @@
                 <div class=" row row-cols-2 p-0 justify-content-center">
 
  
-<!--                   <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
+                   <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
+                    <div class="district_and_division_data">
+                      <h4>Barishal</h4>
+                      <h4>{{ $Barishal }}</h4>
+                    </div>
+                  </div>
+                   <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
                     <div class="district_and_division_data">
                       <h4>Chattogram</h4>
-                      <h4>1002</h4>
+                      <h4>{{ $Chattogram }}</h4>
                     </div>
                   </div>
                   <div class=" col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
                     <div class="district_and_division_data">
                       <h4>Dhaka</h4>
-                      <h4>1002</h4>
+                      <h4>{{ $Dhaka }}</h4>
                     </div>
                   </div>
                   <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
                     <div class="district_and_division_data">
                       <h4>Khulna</h4>
-                      <h4>1002</h4>
+                      <h4>{{ $Khulna }}</h4>
                     </div>
                   </div>
                   <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
                     <div class="district_and_division_data">
                       <h4>Rajshahi</h4>
-                      <h4>1002</h4>
+                      <h4>{{ $Rajshahi }}</h4>
                     </div>
                   </div>
                   <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
                     <div class="district_and_division_data">
                       <h4>Rangpur</h4>
-                      <h4>1002</h4>
+                      <h4>{{ $Rangpur }}</h4>
                     </div>
                   </div>
                   <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
                     <div class="district_and_division_data">
                       <h4>Mymensingh</h4>
-                      <h4>1002</h4>
+                      <h4>{{ $Mymensingh }}</h4>
                     </div>
                   </div>
                   <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
                     <div class="district_and_division_data">
                       <h4>Sylhet</h4>
-                      <h4>1002</h4>
+                      <h4>{{ $Sylhet }}</h4>
                     </div>
-                  </div> -->
+                  </div> 
 
 
                 </div>
@@ -267,7 +237,7 @@
 
  
 
-  <section id="services" class="bg-light">
+  <section id="online_process" class="bg-light">
     <div class="container">
       <div class="row">
         <div class="col-lg-10 mx-auto">
@@ -376,7 +346,7 @@ Reported illnesses have ranged from mild symptoms to severe illness and death</p
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+      <p class="m-0 text-center text-white">Copyright &copy; COVID-TMS 2023</p>
     </div>
     <!-- /.container -->
   </footer>

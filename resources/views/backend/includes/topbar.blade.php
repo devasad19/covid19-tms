@@ -77,9 +77,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
- 
+                                <?php $ttype = str_replace('_', ' ', Auth::user()->type); ?>
 
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}<br> @if(Auth::user()->type == null) User @else {{ ucfirst(Auth::user()->type) }} @endif</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}<br> @if(Auth::user()->type == null) User @else {{ ucwords($ttype) }} @endif</span>
                             
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('images/profile.png') }}">
@@ -106,7 +106,7 @@
 
 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" onclick="event.preventDefault();
+                                <a class="dropdown-item" style="cursor: pointer;" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout

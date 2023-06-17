@@ -37,10 +37,12 @@
                                     <tbody>
 	            						@foreach($allPatients as $patient)
 	            					 		@if($patient->step == 'report_done')
+
+	            					 		 <?php $ttype = str_replace('_', ' ', $patient->user->type); ?>
 	                                        <tr>
 	                                            <td>{{$i++}}</td>
 	                                            <td>{{ $patient->user->name }}</td>
-	                                            <td>{{ $patient->user->type }}</td>
+	                                            <td>{{ ucwords($ttype) }}</td>
 	                                            <td>{{ $patient->vaccineRegister->user->nid->pid }}</td>
 	                                            <td>{{ $patient->vaccineRegister->user->name }}</td>
 	                                             

@@ -52,10 +52,10 @@ section {
     background: rgb(33, 99, 160);
 }
 .eXiOBo.map_dataset_area div[class*="d_&_d"]:nth-child(4) .district_and_division_data {
-    background: rgb(141, 198, 63);
+    background: rgb(198 169 63);
 }
 .eXiOBo.map_dataset_area div[class*="d_&_d"]:nth-child(5) .district_and_division_data {
-    background: rgb(238, 38, 47);
+    background: rgb(221 110 115);
 }
 .eXiOBo.map_dataset_area div[class*="d_&_d"]:nth-child(6) .district_and_division_data {
     background: rgb(56 124 93);

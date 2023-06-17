@@ -14,11 +14,15 @@
                         <div class="offset-md-2 col-lg-8">
            <!-- Basic Card Example -->
                             <div class="card shadow mb-4">
+                                @if(!isset($patient->mothers_name))
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-danger">Patient Not Registration Yet.</h6>
+                                </div>
+                                @else
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Patient Information</h6>
                                 </div>
                                 <div class="card-body">
-   
                                      <table class="table details_table table-bordered"  width="100%" cellspacing="0">
                                         <tr>
                                         <th>Patient ID</th> 
@@ -62,13 +66,19 @@
                                         <th>Division</th> 
                                         <td>{{ $patient->division }}</td>
                                         </tr>
-
-                                         
+                                         <tr>
+                                        <th>Status</th> 
+                                        <td>
+                                            @if($patient->status == 1)
+                                                <span class="badge badge-warning" style="font-size: 17px">Pending</span> 
+                                             @else 
+                                             <span class="badge badge-success" style="font-size: 17px">Active</span> 
+                                         @endif
+                                     </td>
+                                        </tr>
                                      </table>
-
-        
-                                    
                                 </div>
+                                @endif
                             </div>
                         </div>
 

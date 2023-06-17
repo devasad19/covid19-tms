@@ -21,7 +21,7 @@
                                      <h4>
                                      	Download Patient Test Report :
 
-                                     	@if($patient->report_file != null)
+                                     	@if(isset($patient->report_file) && $patient->report_file != null)
 											<a href="{{ route('user.downloadTestReport', $patient->id) }}" class="d-none ml-5 d-sm-inline-block btn btn-sm btn-primary shadow-sm">
 											<i class="fas fa-download fa-sm text-white-50"></i> Download</a>
 										@else
@@ -48,9 +48,4 @@
    
 
 @endsection
-
-
-
-
-
 

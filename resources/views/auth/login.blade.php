@@ -76,12 +76,12 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="password-recovery.php" style="font-weight:bold">Forgot Password?</a>
+                                        <a class="small" href="3" style="font-weight:bold">Forgot Password?</a>
 
                                     </div>
 
                                          <div class="text-center">
-                                        <a class="small" href="index.php" style="font-weight:bold;"><i class="fa fa-home" aria-hidden="true"></i> Home Page</a>
+                                        <a class="small" href="/" style="font-weight:bold;"><i class="fa fa-home" aria-hidden="true"></i> Home Page</a>
                                     </div>
                         
                                 </div>
