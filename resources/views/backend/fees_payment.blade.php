@@ -40,7 +40,6 @@
                                             <input type="text" class="form-control" value="2000" readonly>
                                         </div>
                                          
-
                                         <div class="form-group">
                                               <label>Payment Method</label>
                                               <select class="form-control" id="state" name="division" required="true">
@@ -62,9 +61,6 @@
                                             <input type="text" class="form-control" placeholder="Enter TrxID" style="color: black;">
                                         </div>
 
-                                         
-                                        
-                                    
 
                             <div class="form-group">
                                  <button type="submit" class="btn btn-primary btn-user btn-block">Submit</button>                           

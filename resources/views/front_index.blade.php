@@ -146,6 +146,36 @@
               </div>
             </div>
           </div>
+
+          <div class="col-12  col-lg-8 col-xl-9 justify-content-center">
+            <div class=" row row-cols-2 p-0 justify-content-center">
+              <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
+                <div class="district_and_division_data">
+                  <h4>নমুনা পরীক্ষা</h4>
+                  <h4>{{ $covidTestAll }}</h4>
+                </div>
+              </div>
+              <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
+                <div class="district_and_division_data">
+                  <h4> শনাক্ত</h4>
+                  <h4>{{ $covidPositive }}</h4>
+                </div>
+              </div>
+              <div class=" col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
+                <div class="district_and_division_data">
+                  <h4> শনাক্তের হার %</h4>
+                  <h4>@if($covidTestAll == 0 || $covidPositive == 0) 0 @else {{ $covidTestAll / $covidPositive }} @endif</h4>
+                </div>
+              </div>
+              <div class="col-6 col-md-4   d_&amp;_d my-2   justify-content-center text-center">
+                <div class="district_and_division_data">
+                  <h4> সুস্থতার হার %</h4>
+                  <h4> @if($covidTestAll == 0 || $covidNigative == 0) 0 @else {{ $covidTestAll / $covidNigative }} @endif</h4>
+                </div>
+              </div>
+               
+            </div>
+          </div>
  
         </div>
       </div>

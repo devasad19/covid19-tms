@@ -20,6 +20,7 @@
                                 <div class="card-body">
                                      <h4>
                                      	Download Patient Test Report :
+                                        
 
                                      	@if(isset($patient->report_file) && $patient->report_file != null)
 											<a href="{{ route('user.downloadTestReport', $patient->id) }}" class="d-none ml-5 d-sm-inline-block btn btn-sm btn-primary shadow-sm">

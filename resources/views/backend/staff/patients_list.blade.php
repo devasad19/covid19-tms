@@ -36,7 +36,7 @@
                                     <tbody>
 	            						@foreach($allPatients as $patient)
 	            							<?php $ttype = str_replace('_', ' ', $patient->user->type); ?>
-	            				 
+
 	                                        <tr>
 	                                            <td>{{$i++}}</td>
 	                                            <td>{{ $patient->user->name }}</td>
@@ -52,7 +52,8 @@
          										@if(Auth::user()->type == 'phlebotomist')
 							                    <form method="POST" action="{{ route('user.phlebotomistStatusUpdate') }}">
 							                        @csrf
-							                        <input type="hidden" name="id" value="{{$patient->id}}">
+							                        <input type="hidden" name="id" value="{{$patient->vaccineRegister->user_id}}">
+							                        <input type="hidden" name="pid" value="{{$patient->id}}">
 							                        <input type="hidden" name="type" value="Phlebotomist">
 		                                            <td class="text-center">
 									                     <div class="form-group">
@@ -66,15 +67,19 @@
 									                    </div>
 		                                             </td>
 		                                             <td>
+		                                             	@if($patient->step == 'sent_to_lab')
 		                                            	 
+		                                            		<a href="#" class="btn btn-secondary btn-user">Update</a>
+		                                            		@else
 		                                            		<button type="submit" class="btn btn-primary btn-user">Update</button>
-		                                            	 
+		                                            	   @endif
 		                                            </td>
 		                                        </form>
 							                    @else
 							                    <form method="POST" action="{{ route('user.phlebotomistStatusUpdate') }}">
 							                        @csrf
-							                        <input type="hidden" name="id" value="{{$patient->id}}">
+							                        <input type="hidden" name="id" value="{{$patient->vaccineRegister->user_id}}">
+							                        <input type="hidden" name="pid" value="{{$patient->id}}">
 							                        <input type="hidden" name="type" value="Specialist Dr">
 		                                            <td class="text-center">
 									                     <div class="form-group">

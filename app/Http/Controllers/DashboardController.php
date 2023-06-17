@@ -55,14 +55,14 @@ class DashboardController extends Controller
         $testTracks = ReportTrack::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
    
 
-        dd(Auth::user()->id);
 
         return view('backend.user_test_track', compact('testTracks'));
     }
 
     public function getReportDownload(){
  
-        $patient = PatientAssign::where('user_id',Auth::user()->id)->first();
+        $pUser = VaccineRegister::where('user_id', Auth::user()->id)->first();
+        $patient = PatientAssign::where(['vaccine_register_id' => $pUser->id, 'report' => 'accepted'])->first();
     
         return view('backend.user_report_download', compact('patient'));
     }
@@ -77,7 +77,7 @@ class DashboardController extends Controller
           'Content-Type: application/pdf',
         );
 
-        return Response::download($file_path, 'test_report.pdf', $headers);
+        return Response::download($file_path, 'tms_test_report.pdf', $headers);
     }
 
 
@@ -85,9 +85,7 @@ class DashboardController extends Controller
         return view('backend.vaccine_registered');
     }
     public function userFeePayment(){
-
-
-        $patient = VaccineRegister::where('user_id',Auth::user()->id)->first();
+        $patient = VaccineRegister::where('user_id', Auth::user()->id)->first();
 
         return view('backend.fees_payment', compact('patient'));
     }
@@ -187,19 +185,6 @@ class DashboardController extends Controller
     }
 
 
-    public function assingToPhlebotomist(Request $request){
-      
-        PatientAssign::create([
-            'vaccine_register_id' => $request->patient_id,
-            'user_id' => $request->staff_id,
-            'type' => $request->type,
-            'step' => null,
-            'status' => 1,
-        ]);
-
-        return back()->with('success', 'Patient sent to staff successfully');
- 
-    }
 
 
     public function adminNewPatientsList(Request $request){ 
@@ -234,6 +219,26 @@ class DashboardController extends Controller
     }
 
 
+    public function assingToPhlebotomist(Request $request){
+      
+        PatientAssign::create([
+            'vaccine_register_id' => $request->vr_id,
+            'user_id' => $request->staff_id,
+            'type' => $request->type,
+            'step' => null,
+            'status' => 1,
+        ]);
+
+        return back()->with('success', 'Patient sent to staff successfully');
+ 
+    }
+
+
+
+
+
+
+
     public function assingedSpecialist(Request $request){ 
  
         $allPatients = PatientAssign::where('type', 'specialist_dr')->get();
@@ -264,11 +269,20 @@ class DashboardController extends Controller
     }
 
 
+    public function specialistPatienList(Request $request){ 
+ 
+        $allPatients = PatientAssign::where('user_id', Auth::user()->id)->get();
+        $specialist_drs = User::where('type', 'specialist_dr')->get();
+
+        $i = 1;
+        return view('backend.staff.patients_list', compact('allPatients', 'specialist_drs','i'));
+    }
+
+
 
     public function phlebotomistStatusUpdate(Request $request){ 
- 
- dd($request->id);
-        $assignPatient = PatientAssign::find($request->id);
+  
+        $assignPatient = PatientAssign::find($request->pid);
 
         if($request->status == 'on_the_way'){
             $status = 'On the Way for Collection';
@@ -289,13 +303,13 @@ class DashboardController extends Controller
         }
 
         ReportTrack::create([
-            'user_id' => $assignPatient->vaccine_register_id,
+            'user_id' => $request->id,
             'staff_id' => $assignPatient->user_id,
             'status' => $status,
             'remark' => $remark,
         ]);
  
-        PatientAssign::where('id', $request->id)->update([
+        PatientAssign::where('id', $request->pid)->update([
             'step' => $request->status,
         ]);
 

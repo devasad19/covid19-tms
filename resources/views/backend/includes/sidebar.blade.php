@@ -89,7 +89,7 @@
                 </a>
                 <div id="collapseTwo" class="collapse {{ request()->is('plhebotomist/patient-list')? 'show': '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {{ request()->is('plhebotomist/patient-list')? 'activeli': '' }}" href="{{ route('plhebotomist.plhebotomistPatienList') }}">My Patients List</a>
+                        <a class="collapse-item {{ request()->is('plhebotomist/patient-list')? 'activeli': '' }}" href="{{ route('specialist.specialistPatienList') }}">My Patients List</a>
                     </div>
                 </div>
             </li>

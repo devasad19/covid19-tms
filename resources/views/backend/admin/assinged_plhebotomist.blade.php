@@ -75,7 +75,12 @@
 					                            </td>
 	                                            <td>
 							                    	@if($patient->step == 'sent_to_lab')
-	                                            		<button data-toggle="modal" data-target="#myModal2" class="btn btn-primary btn-user">Assign To Specialist</button>
+								                    	@if(!$patient->vaccineRegister)
+		                                            		<button data-toggle="modal" data-target="#myModal2" class="btn btn-primary btn-user">Assign To Specialist</button>
+
+								                    	@else
+		                                            		<button class="btn btn-secondary btn-user">Assign To Specialist</button>
+								                    	@endif
 							                    	@else
 	                                            		<button class="btn btn-secondary btn-user">Assign To Specialist</button>
 							                    	@endif
@@ -83,8 +88,7 @@
 							                    @endif
 	                                        </tr>
 
-
-
+ 
 
 							            <!-- Pop-up Modal to display image URL -->
 							            <div class="modal fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel">
@@ -97,7 +101,7 @@
 							                     
 						                    <form method="POST" action="{{ route('admin.assingToPhlebotomist') }}">
 						                        @csrf
-						                        <input type="hidden" name="patient_id" value="{{$patient->id}}">
+						                        <input type="hidden" name="vr_id" value="{{$patient->vaccineRegister->id}}">
 						                        <input type="hidden" name="type" value="specialist_dr">
 								                 <div class="ffdsfp">
 								                     <div class="form-group">

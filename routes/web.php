@@ -40,7 +40,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/admin/assinged-plhebotomist', [App\Http\Controllers\DashboardController::class, 'assingedPlhebotomist'])->name('admin.assingedPlhebotomist');
     Route::get('/admin/assinged-specialist', [App\Http\Controllers\DashboardController::class, 'assingedSpecialist'])->name('admin.assingedSpecialist');
     Route::get('/admin/report-deliveriable', [App\Http\Controllers\DashboardController::class, 'reportDeliveriableList'])->name('admin.reportDeliveriableList');
+
     Route::get('/plhebotomist/patient-list', [App\Http\Controllers\DashboardController::class, 'plhebotomistPatienList'])->name('plhebotomist.plhebotomistPatienList');
+
+    Route::get('/specialist/patient-list', [App\Http\Controllers\DashboardController::class, 'specialistPatienList'])->name('specialist.specialistPatienList');
+
+
     Route::post('/specialist/upload-report', [App\Http\Controllers\DashboardController::class, 'uploadReportFile'])->name('staff.uploadReportFile');
     Route::post('/plhebotomist/upload-collected-sample', [App\Http\Controllers\DashboardController::class, 'uploadCollectedSample'])->name('staff.uploadCollectedSample');
     Route::get('/user/show-details', [App\Http\Controllers\DashboardController::class, 'showRegDetails'])->name('user.showRegDetails');
