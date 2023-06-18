@@ -1,6 +1,4 @@
-@extends('backend.app.backend_index')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -12,31 +10,31 @@
  
  
                         <div class="offset-md-2 col-lg-8">
-        @include('backend.includes.alerts')
+        <?php echo $__env->make('backend.includes.alerts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-                    <form method="POST" action="{{ route('user.userStoreFeePayment') }}">
-                        @csrf
+                    <form method="POST" action="<?php echo e(route('user.userStoreFeePayment')); ?>">
+                        <?php echo csrf_field(); ?>
 
-                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="user_id" value="<?php echo e(Auth::user()->id); ?>">
                             <!-- Basic Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary d-inline-block">Payment Information</h6>
 
-                                    @if(isset($patient->status) && $patient->status == 1)
+                                    <?php if(isset($patient->status) && $patient->status == 1): ?>
                                     <button class="btn btn-sm btn-warning float-right d-inline-block">Not Paid</button>
-                                    @else
+                                    <?php else: ?>
                                     <button class="btn btn-sm btn-success float-right d-inline-block">Paid</button>
-                                    @endif
+                                    <?php endif; ?>
                                 </div>
                                 <div class="card-body">
                             <div class="form-group">
                                 <label>Name</label>
-                                            <input type="text" class="form-control" name="name" value="{{Auth::user()->name}}" readonly style="color: black;">
+                                            <input type="text" class="form-control" name="name" value="<?php echo e(Auth::user()->name); ?>" readonly style="color: black;">
                                         </div>
                             <div class="form-group">
                             <label>Patient ID</label>
-                                            <input type="text" class="form-control" value="{{ Auth::user()->nid->pid }}" readonly>
+                                            <input type="text" class="form-control" value="<?php echo e(Auth::user()->nid->pid); ?>" readonly>
                                         </div>
                             <div class="form-group">
                             <label>Fees Amount (TK)</label>
@@ -81,16 +79,18 @@
 
                 </div>
                 <!-- /.container-fluid -->
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('scripts')
+<?php $__env->startSection('scripts'); ?>
    
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
 
 
 
+
+<?php echo $__env->make('backend.app.backend_index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /opt/lampp/htdocs/covid19-tms/resources/views/backend/fees_payment.blade.php ENDPATH**/ ?>

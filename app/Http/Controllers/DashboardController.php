@@ -51,19 +51,17 @@ class DashboardController extends Controller
     }
 
     public function userTestHistory(){
- 
         $testTracks = ReportTrack::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
    
-
-
         return view('backend.user_test_track', compact('testTracks'));
     }
 
     public function getReportDownload(){
- 
         $pUser = VaccineRegister::where('user_id', Auth::user()->id)->first();
-        $patient = PatientAssign::where(['vaccine_register_id' => $pUser->id, 'report' => 'accepted'])->first();
-    
+        $patient = null;
+        if($pUser != null){
+            $patient = PatientAssign::where(['vaccine_register_id' => $pUser->id, 'report' => 'accepted'])->first();
+        }
         return view('backend.user_report_download', compact('patient'));
     }
 
@@ -89,6 +87,16 @@ class DashboardController extends Controller
 
         return view('backend.fees_payment', compact('patient'));
     }
+
+    public function userStoreFeePayment(Request $request){
+        $patient = VaccineRegister::where('user_id', $request->user_id)->update([
+            'status' => 2
+        ]);
+
+         return back()->with('success', 'User Payment successfully completed');
+    }
+
+
 
     public function addPhlebotomist(){
 
@@ -130,7 +138,7 @@ class DashboardController extends Controller
                 $bc = UserNid::where('nid', $request->bc)->first();
 
                 if($bc == null){
-                    UserNid::create([
+                   $bc = UserNid::create([
                         'nid' => $request->bc,
                         'dob' => $request->dob,
                         'pid' => rand(10000000, 99999999),
@@ -139,7 +147,7 @@ class DashboardController extends Controller
                         'status' => 1
                     ]);
  
-                    return redirect()->route('user.vaccineRegStep2');
+                    return redirect()->route('user.vaccineRegStep2', $bc->id);
 
                 }else{
                     return back()->with('error', 'Birth certificate ID already exists');
